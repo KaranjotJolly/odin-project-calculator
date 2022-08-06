@@ -7,7 +7,8 @@ const numberButtons = document.querySelectorAll('.num-button');
 const operatorsButtons = document.querySelectorAll('.operator');
 const equalsToButton = document.querySelector('.equals');
 const clearButton = document.getElementById("clear");
-const deleteButton = document.querySelector('.delete')
+const deleteButton = document.querySelector('.delete');
+const decimalButton = document.querySelector('decimal-button')
 
 const valueDisplay = document.getElementById('value-display');
 const lastValueDisplay = document.getElementById('last-value-display')
@@ -41,7 +42,10 @@ function resetScreen() {
 if(shouldResetScreen) {
     resetScreen()
 }
-  
+
+function roundTo(num) {
+    return parseFloat(num.toFixed(4))
+}
 
 function setNumberValue(number) {
     if (valueDisplay.textContent === '0' || shouldResetScreen)
@@ -64,16 +68,18 @@ function evaluate() {
     if (currentOperator === null || shouldResetScreen) return
     // const splitStr = valueDisplay.textContent.split(currentOperator);
 
-    if(currentOperator === '÷' && +splitStr[1] === 0) {
+    if(currentOperator === '÷' && secondInput === 0) {
         alert("Cannot divide number by 0.")
     }
 
     secondInput = valueDisplay.textContent;
 
     const result = operate(currentOperator, +firstInput, +secondInput);
+    const displayValue = roundTo(result)
+
     lastValueDisplay.textContent = `${firstInput} ${currentOperator} ${secondInput} =`
     
-    valueDisplay.textContent = result;
+    valueDisplay.textContent = displayValue;
     currentOperator = null
 }
 
@@ -118,8 +124,7 @@ const operate = (operator, num1, num2) => {
         break;
 
         case "÷":
-            if (num2 === 0) return null
-            else return divide(num1, num2)
+            return divide(num1, num2)
         break;
 
         case '×':

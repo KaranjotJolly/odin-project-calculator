@@ -113,6 +113,14 @@
     border: 1px solid black;
 }
 
+.num-button:hover {
+    cursor: pointer;
+}
+
+.operator:hover {
+    cursor: pointer
+}
+
 .operator {
     width: 75px;
     background-color: #FF9F0C;
@@ -147,6 +155,11 @@
     border: 1px solid black;
 }
 
+.clear:hover {
+    cursor: pointer
+}
+
+
 .delete {
     height: 65px;
     background-color: #3F4143;
@@ -155,10 +168,19 @@
     border: 1px solid black;
 }
 
+.delete:hover {
+    cursor: pointer
+}
+
+
 .percentage {
     height: 65px;
     background-color: #3F4143;
     font-size: 25px;
     color: white;
     border: 1px solid black;
+}
+
+.percentage:hover {
+    cursor: pointer
 }
