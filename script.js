@@ -27,8 +27,13 @@ operatorsButtons.forEach((button) => {
 })
 
 deleteButton.addEventListener('click', () => {
-    valueDisplay.textContent = valueDisplay.textContent.slice(0, -1)
+    backspace()
 })
+    
+
+function backspace() {
+    valueDisplay.textContent = valueDisplay.textContent.slice(0, -1)
+}
 
 clearButton.addEventListener('click', () => {
     clearInput()
@@ -92,6 +97,58 @@ function clearInput() {
     valueDisplay.textContent = '0'
     lastValueDisplay.textContent = ''
 }
+
+// Keyboadr Support
+document.addEventListener('keydown', function(event) {
+    if(event.keyCode == 48) {
+        setNumberValue("0")
+    }
+    else if(event.keyCode == 49) {
+        setNumberValue("1")
+    }
+    else if(event.keyCode == 50) {
+        setNumberValue("2");
+    }
+    else if(event.keyCode == 51) {
+        setNumberValue("3");
+    }
+    else if(event.keyCode == 52) {
+       setNumberValue("4");
+    }
+    else if(event.keyCode == 53) {
+       setNumberValue("5");
+    }
+    else if(event.keyCode == 54) {
+        setNumberValue("6");
+    }
+    else if(event.keyCode == 55) {
+        setNumberValue("7");
+    }
+    else if(event.keyCode == 56) {
+        setNumberValue("8");
+    }
+    else if(event.keyCode == 57) {
+        setNumberValue("9");
+    }
+    else if(event.keyCode == 8) {
+        backspace()
+    }
+    else if(event.key == "+") {
+        setOperatorValue("+")
+    }
+    else if(event.key == "-") {
+        setOperatorValue("-")
+    }
+    else if(event.key == "*") {
+        setOperatorValue("×")
+    }
+    else if(event.key == "/") {
+        setOperatorValue("÷")
+    }
+    else if(event.keyCode == 13) {
+        evaluate()
+    }
+});
 
 // Add function
 const add = (num1, num2) => {
